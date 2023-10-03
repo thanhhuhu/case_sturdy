@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Đăng nhập</title>
+    <style>
+        #loginForm {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button id="showLoginForm">Login</button>
+    <div id="loginForm">
+        <h2>Đăng nhập</h2>
+        <label for="username">Tài khoản:</label>
+        <input type="text" id="username" placeholder="Nhập tài khoản">
+        <br>
+        <label for="password">Mật khẩu:</label>
+        <input type="password" id="password" placeholder="Nhập mật khẩu">
+        <br>
+        <button id="loginButton">Đăng nhập</button>
+    </div>
+
+    <script>
+        const showLoginFormButton = document.getElementById('showLoginForm');
+        const loginForm = document.getElementById('loginForm');
+        const loggedInUser = document.createElement('p'); // Tạo một phần tử p để hiển thị tên đăng nhập
+
+        showLoginFormButton.addEventListener('click', () => {
+            loginForm.style.display = 'block';
+        });
+
+        const loginButton = document.getElementById('loginButton');
+        loginButton.addEventListener('click', () => {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Đoạn này bạn có thể thêm logic xác thực tài khoản và mật khẩu ở đây
+            // Ví dụ:
+            if (username === 'user' && password === 'password') {
+                loggedInUser.textContent = `Chào ${username}!`; // Hiển thị tên đăng nhập
+                loginForm.style.display = 'none'; // Ẩn form đăng nhập
+            } else {
+                alert('Tài khoản hoặc mật khẩu không đúng. Vui lòng thử lại.');
+            }
+        });
+
+        // Thêm phần tử hiển thị tên đăng nhập vào body
+        document.body.appendChild(loggedInUser);
+    </script>
+</body>
+</html>
